@@ -24,9 +24,8 @@ public class TestBase {
         practiceFormPage.selenideOpen();
     }
 
-    @AfterEach
+    /*@AfterEach
     public void tearDown() {
         closeWindow();
-    }
-
+    }*/
 }

@@ -1,13 +1,8 @@
 package org.example.practiceForm.tests;
 
-import com.codeborne.selenide.Configuration;
-import org.example.practiceForm.pages.PracticeFormPage;
-import org.junit.jupiter.api.*;
-import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 public class PracticeFormTest extends TestBase {
 
@@ -31,23 +26,24 @@ public class PracticeFormTest extends TestBase {
     @DisplayName("Проверка поля ввода Email")
     @Test
     public void checkEmailInput() {
-        $("#userEmail").isDisplayed();
-        $("#userEmail").sendKeys("dfgds@asdfas");
+        String emailVal = "Mihov";
+        practiceFormPage.sendValueEmailInput(emailVal);
     }
 
     @Tag("RadioButton")
     @DisplayName("Проверка выбора radioButton Gender Male")
     @Test
     public void checkGenderRadioButton() {
-        $("#genterWrapper").$(byText("Male")).click();
+        String gender = "Male";
+        practiceFormPage.clickOnRadioButtonGender(gender);
     }
 
     @Tag("Input")
     @DisplayName("Проверка поля ввода Mobile Number")
     @Test
     public void checkMobileNumberInput() {
-        $("#userNumber").isDisplayed();
-        $("#userNumber").sendKeys("848484");
+        String mobileNumber = "89345548595";
+        practiceFormPage.setMobileNumber(mobileNumber);
     }
 
     @Tag("Date")
@@ -61,14 +57,15 @@ public class PracticeFormTest extends TestBase {
     @DisplayName("Проверка нажатия на чекбокс Хобби")
     @Test
     public void checkHobbiesCheckBox() {
-        $("#hobbiesWrapper").$(byText("Sports")).click();
+        practiceFormPage.clickOnHobbiesCheckBox();
     }
 
     @Tag("Input")
     @DisplayName("Проверка ввода в поле Current Address")
     @Test
     public void checkCurrentAddress() {
-        $("#currentAddress").sendKeys("Dom");
+        String address = "Moscow";
+        practiceFormPage.sendValueCurrentAddress(address);
     }
 
     @Tag("Registration")
@@ -77,9 +74,17 @@ public class PracticeFormTest extends TestBase {
     public void succsessfulRegistrationTest() {
         String name = "Dudka";
         String lastName = "Trubnik";
+        String emailVal = "Mihov@mail.com";
+        String mobileNumber = "89345548595";
+        String gender = "Male";
+        String address = "Moscow";
 
         practiceFormPage.sendValueFirstNameInput(name)
-                .sendValueLastNameInput(lastName);
+                .sendValueLastNameInput(lastName)
+                .sendValueEmailInput(emailVal)
+                .setMobileNumber(mobileNumber)
+                .clickOnRadioButtonGender(gender)
+                .sendValueCurrentAddress(address)
+                .clickOnHobbiesCheckBox();
     }
-
 }
