@@ -78,6 +78,9 @@ public class PracticeFormTest extends TestBase {
         String mobileNumber = "89345548595";
         String gender = "Male";
         String address = "Moscow";
+        String day = "25";
+        String month = "December";
+        String year = "2024";
 
         practiceFormPage.sendValueFirstNameInput(name)
                 .sendValueLastNameInput(lastName)
@@ -85,6 +88,7 @@ public class PracticeFormTest extends TestBase {
                 .setMobileNumber(mobileNumber)
                 .clickOnRadioButtonGender(gender)
                 .sendValueCurrentAddress(address)
-                .clickOnHobbiesCheckBox();
+                .clickOnHobbiesCheckBox()
+                .setBirthDate(day, month, year);
     }
 }
