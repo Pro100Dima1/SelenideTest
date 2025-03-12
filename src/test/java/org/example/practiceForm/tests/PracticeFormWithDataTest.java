@@ -1,49 +1,46 @@
 package org.example.practiceForm.tests;
 
+import org.example.practiceForm.pages.PracticeFormPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-public class PracticeFormTest extends TestBase {
+public class PracticeFormWithDataTest extends TestData {
+    public PracticeFormPage practiceFormPage = new PracticeFormPage();
 
     @Tag("Input")
     @DisplayName("Проверка поля ввода FirstName")
     @Test
     public void checkFirstNameInput() {
-        String name = "Lesha";
-        practiceFormPage.sendValueFirstNameInput(name);
+        practiceFormPage.sendValueFirstNameInput(dataName);
     }
 
     @Tag("Input")
     @DisplayName("Проверка поля ввода LastName")
     @Test
     public void checkLastNameInput() {
-        String lastName = "Mihov";
-        practiceFormPage.sendValueLastNameInput(lastName);
+        practiceFormPage.sendValueLastNameInput(dataLastName);
     }
 
     @Tag("Input")
     @DisplayName("Проверка поля ввода Email")
     @Test
     public void checkEmailInput() {
-        String emailVal = "Mihov@mail.com";
-        practiceFormPage.sendValueEmailInput(emailVal);
+        practiceFormPage.sendValueEmailInput(dataEmail);
     }
 
     @Tag("RadioButton")
     @DisplayName("Проверка выбора radioButton Gender Male")
     @Test
     public void checkGenderRadioButton() {
-        String gender = "Male";
-        practiceFormPage.clickOnRadioButtonGender(gender);
+        practiceFormPage.clickOnRadioButtonGender(dataGender);
     }
 
     @Tag("Input")
     @DisplayName("Проверка поля ввода Mobile Number")
     @Test
     public void checkMobileNumberInput() {
-        String mobileNumber = "89345548595";
-        practiceFormPage.setMobileNumber(mobileNumber);
+        practiceFormPage.setMobileNumber(dataMobileNumber);
     }
 
     @Tag("Date")
@@ -64,31 +61,20 @@ public class PracticeFormTest extends TestBase {
     @DisplayName("Проверка ввода в поле Current Address")
     @Test
     public void checkCurrentAddress() {
-        String address = "Moscow";
-        practiceFormPage.sendValueCurrentAddress(address);
+        practiceFormPage.sendValueCurrentAddress(dataAddress);
     }
 
     @Tag("Registration")
     @DisplayName("Проверка успешной регистрации")
     @Test
     public void succsessfulRegistrationTest() {
-        String name = "Dudka";
-        String lastName = "Trubnik";
-        String emailVal = "Mihov@mail.com";
-        String mobileNumber = "89345548595";
-        String gender = "Male";
-        String address = "Moscow";
-        String day = "25";
-        String month = "December";
-        String year = "2024";
-
-        practiceFormPage.sendValueFirstNameInput(name)
-                .sendValueLastNameInput(lastName)
-                .sendValueEmailInput(emailVal)
-                .setMobileNumber(mobileNumber)
-                .clickOnRadioButtonGender(gender)
-                .sendValueCurrentAddress(address)
+        practiceFormPage.sendValueFirstNameInput(dataName)
+                .sendValueLastNameInput(dataLastName)
+                .sendValueEmailInput(dataEmail)
+                .setMobileNumber(dataMobileNumber)
+                .clickOnRadioButtonGender(dataGender)
+                .sendValueCurrentAddress(dataAddress)
                 .clickOnHobbiesCheckBox()
-                .setBirthDate(day, month, year);
+                .setBirthDate(dataDay, dataMonth, dataYear);
     }
 }
